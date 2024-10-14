@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+    # go to frontend folder
+      context: ./frontend
+    # find Dockerfile
+      dockerfile: Dockerfile
+    ports:
+    # map port 3000 (host) to 3000 in container
+      - "3000:3000"
+    volumes:
+    # link frontend in local with app in container
+      - ./frontend:/app
+
+
+  backend:
+    build:
+    # go to backend folder
+      context: ./backend
+    #  find Dockerfile
+      dockerfile: Dockerfile
+    ports:
+    # map port 8889 (host) to 8888 in container
+      - "8889:8888"
+    volumes:
+      # link backend in local with app in container
+      - ./backend:/app
